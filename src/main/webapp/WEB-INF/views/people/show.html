@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Person</title>
+</head>
+<body>
+<h1>View Person</h1>
+<p>ID: <span th:text="${person.id}"></span></p>
+<p>Name: <span th:text="${person.name}"></span></p>
+<p>Age: <span th:text="${person.age}"></span></p>
+<p>Email: <span th:text="${person.email}"></span></p>
+<a th:href="@{/people}">Back to List</a>
+<a th:href="@{/people/{id}/edit(id=${person.id})}">Edit</a>
+<form th:action="@{/people/{id}(id=${person.id})}" method="post"
+      onsubmit="return confirm('Are you sure you want to delete this person?')">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button type="submit">Delete</button>
+</form>
+</body>
+</html>
